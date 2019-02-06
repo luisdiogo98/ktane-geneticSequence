@@ -1,0 +1,564 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Genetic Sequence — Keep Talking and Nobody Explodes Module</title>
+        <meta name="viewport" content="initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+        <script src="js/highlighter.js"></script>
+        <script src="js/ruleseed.js"></script>
+        <style>
+            table {
+                margin: 1em auto;
+            }
+
+            .bold {
+                font-weight: bold;
+            }
+            .underline {
+                text-decoration: underline;
+            }
+            .italics {
+                font-style: italic;
+            }
+
+            code {background-color: rgb(235, 235, 200);}
+            code.notcode {background-color: white;}
+            li ol {margin: 0;}
+            kbd {background-color: #f5f5f5;border-style: solid;border-width: 1px 2px 2px 1px;padding: 0 1px;}
+    
+            .aatable {
+                text-align: center;
+            }
+
+            table {
+                border: none;
+            }
+
+            .empty {
+                border: none;
+            }
+
+            .inline {
+                display: flex;
+            }
+
+            text {
+                font-family: 'Special Elite';
+            }
+
+            #Camada_1 {
+                float: none;
+                width: 115%;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="ManualContent">
+            <div class="section">
+                <div class="page page-bg-01">
+                    <div class="page-header">
+                        <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                        <span class="page-header-section-title">Genetic Sequence</span>
+                    </div>
+                    <div class="page-content">
+                        <img src="img/Component/Genetic Sequence.svg" class="diagram">
+                        <h2>On the Subject of Genetic Sequences</h2>
+                        <p class="flavour-text">Only true scientists synthetize proteins while bomb defusing.</p>
+                        
+                        <p class="appendix-reference">See Appendix A for indicator identification reference.</p>
+                        
+                        <ul>
+                            <li>The module consists of four lettered buttons, a button labeled "OK", a button labeled "CLR" and two display screens.</li>
+                            <li>To disarm the module, input the correct DNA sequence using the lettered buttons and press "OK" to submit. Submitting an incorrect sequence will cause a strike. Press "CLR" to clear all input.</li>
+                            <li>The default input seuquence is the <b>coding strand</b>. If you are instructed to alternate the final input sequence, switch between the <b>coding strand</b> and the <b>template strand</b>.</li>                            
+                        </ul>
+                        
+                        <br>
+
+                        <h3>Determine Starting Amino Acid</h3>
+
+                        <p>Using the table below, determine the starting amino acid by refering to the order in which the four lettered buttons appear in the module. Follow the first rule that applies.</p>
+
+                        <table>
+                            <tr>
+                                <th>Rule</th>
+                                <th>Starting Amino Acid</th>
+                            </tr>
+                            <tr>
+                                <td>The buttons appear in alphabetical order.</td>
+                                <td class="aatable">Trp</td>
+                            </tr>
+                            <tr>
+                                <td>The subsequence "ACT" is present in the button order.</td>
+                                <td class="aatable">Gly</td>
+                            </tr>
+                            <tr>
+                                <td>"G" is the label of the last button.</td>
+                                <td class="aatable">Tyr</td>
+                            </tr>
+                            <tr>
+                                <td>"T" is the label of the first button.</td>
+                                <td class="aatable">Cys</td>
+                            </tr>  
+                            <tr>
+                                <td>The button labeled "C" appears before the buttons labeled "A" and "T".</td>
+                                <td class="aatable">Arg</td>
+                            </tr> 
+                            <tr>
+                                <td>The buttons labeled "A" and "T" are next to each other.</td>
+                                <td class="aatable">Leu</td>
+                            </tr>  
+                            <tr>
+                                <td>The buttons labeled "G" and "C" are next to each other.</td>
+                                <td class="aatable">Ala</td>
+                            </tr>
+                            <tr>
+                                <td>No other rules apply.</td>
+                                <td class="aatable">Asn</td>
+                            </tr>          
+                        </table>
+                    </div>
+                   <div class="page-footer relative-footer">Page 1 of 3</div>
+                </div>
+                <div class="page page-bg-02">
+                    <div class="page-header">
+                        <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                        <span class="page-header-section-title">Genetic Sequence</span>
+                    </div>
+                    <div class="page-content">
+                        <h3>Determine Amino Acid Sequence</h3>
+
+                        <p>Starting with the amino acid obtained in the previous step, use the graph below to obtain a sequence of four amino acids. In order to determine the next amino acid in the sequence, locate the last amino acid determined in the graph and choose a path to the next one using the following rules:</p>
+    
+                        <ul>
+                            <li>If the bomb has a lit indicator with a label that matches the name of a path, follow that path. If one or more paths match this rule, follow the one that comes first alphabetically.</li>
+                            <li>Otherwise, if the bomb has an unlit indicator with a label that matches the name of a path, follow that path and <b>alternate the final input sequence</b>. If one or more paths match this rule, follow the one that comes first alphabetically.</li>
+                            <li>Otherwise, follow the path that comes first alphabetically.</li>
+                            <li>No path may be followed more than once. This rule supersedes all previous rules.</li>
+                        </ul>
+
+                        <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                      viewBox="0 0 1024 768" style="enable-background:new 0 0 1024 768;" xml:space="preserve">
+                            <style type="text/css">
+                                .st0{fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
+                                .st1{fill:none;stroke:#1D1D1B;stroke-width:3;stroke-miterlimit:10;}
+                                .st2{stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
+                                .st3{fill:#1D1D1B;}
+                                .st4{font-family:'Special Elite';}
+                                .st5{font-size:36px;}
+                                .st6{fill:#00000000;stroke:#1D1D1B;stroke-width:6;stroke-miterlimit:10;}
+                                .st7{font-size:17px;}
+                                .st8{fill:#00000000;}
+                            </style>
+                            <line class="st0" x1="117" y1="91" x2="117" y2="322"/>
+                            <polyline class="st1" points="155.1,67.4 501.5,67.5 501.5,128.5 530.1,128.5 "/>
+                            <line class="st2" x1="421" y1="144" x2="530" y2="144"/>
+                            <polyline class="st0" points="381.1,152.6 381.5,223.5 421,223.5 "/>
+                            <path class="st0" d="M609.6,129.4l139.9,0.1v43.6"/>
+                            <line class="st0" x1="461.1" y1="242.6" x2="461.1" y2="322"/>
+                            <polyline class="st0" points="789.1,196.4 815.5,196.5 815.5,600.5 768.1,600.5 "/>
+                            <polyline class="st0" points="155.1,344.9 372.5,344.5 372.5,398.5 649.1,398.5 "/>
+                            <line class="st0" x1="115.1" y1="368.1" x2="117.1" y2="502.6"/>
+                            <path class="st0" d="M600.1,279.9"/>
+                            <polyline class="st0" points="501.1,219.4 649.5,219.5 649.5,196.5 709.1,196.5 "/>
+                            <polyline class="st0" points="264.6,157.4 264.5,129.5 341.1,129.5 "/>
+                            <polyline class="st1" points="184.5,180.5 155.5,180.5 155.1,90.6 "/>
+                            <polyline class="st0" points="228.1,203.9 228.5,275.5 255.5,275.5 "/>
+                            <polyline class="st0" points="600.5,279.5 499.5,279.5 499.5,322 "/>
+                            <polyline class="st0" points="623,303.1 623.5,356.5 649.5,356.5 "/>
+                            <polyline class="st0" points="319,322.5 318.5,335.5 332.1,344.5 318.5,351.5 318.5,460.5 247.5,460.5 247.1,566.6 "/>
+                            <polyline class="st0" points="287.1,414.9 308.5,414.5 318.5,398.5 326.5,414.5 350.5,414.5 350.6,479.6 "/>
+                            <polyline class="st0" points="206.6,414.9 133.5,414.5 133.5,502.6 "/>
+                            <line class="st0" x1="216.5" y1="440.5" x2="216.5" y2="563.5"/>
+                            <line class="st0" x1="277.1" y1="589.9" x2="372.1" y2="589.9"/>
+                            <polyline class="st0" points="117.1,549.1 117.5,636.5 728.5,636.5 728.5,624.1 "/>
+                            <line class="st0" x1="390" y1="526.1" x2="390" y2="563.6"/>
+                            <polyline class="st0" points="412.1,502.9 465.5,502.5 490.5,502.5 490.5,483.5 "/>
+                            <polyline class="st0" points="680.1,279.5 785.5,279.5 785.5,458.5 785.5,472.5 "/>
+                            <path class="st0" d="M688.1,402.6"/>
+                            <line class="st0" x1="727.1" y1="398.5" x2="727.1" y2="460.6"/>
+                            <line class="st0" x1="728.5" y1="507.1" x2="728.5" y2="577.6"/>
+                            <line class="st0" x1="452.1" y1="583.9" x2="530" y2="583.5"/>
+                            <line class="st0" x1="607.7" y1="588.8" x2="688.1" y2="588.8"/>
+                            <polyline class="st0" points="425.4,322.5 425.5,262.5 295.5,262.5 295.1,275.6 "/>
+                            <polyline class="st0" points="490.1,460.6 394.5,460.5 394.5,409.5 412.1,398.5 394.5,388.5 394.5,298.5 335.1,298.9 "/>
+                            <polyline class="st0" points="570.1,460.6 600.5,460.5 600.5,548.5 "/>
+                            <g>
+                                <text transform="matrix(1 0 0 1 86.6058 79.1161)" class="st3 st4 st5">Phe</text>
+                                <path class="st6 highlightable" d="M149.1,90.6h-64c-4.4,0-8-3.6-8-8V52.1c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C157.1,87,153.5,90.6,149.1,90.6z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 718.6058 208.1161)" class="st3 st4 st5">Ser</text>
+                                <path class="st6 highlightable" d="M781.1,219.6h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C789.1,216,785.5,219.6,781.1,219.6z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 197.6002 192.3608)" class="st3 st4 st5">Asn</text>
+                                <path class="st6 highlightable" d="M260.1,203.9h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C268.1,200.3,264.5,203.9,260.1,203.9z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 84.6058 356.6051)" class="st3 st4 st5">Trp</text>
+                                <path class="st6 highlightable" d="M147.1,368.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C155.1,364.5,151.5,368.1,147.1,368.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 216.6058 426.6051)" class="st3 st4 st5">Ala</text>
+                                <path class="st6 highlightable" d="M279.1,438.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C287.1,434.5,283.5,438.1,279.1,438.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 341.6058 514.6051)" class="st3 st4 st5">His</text>
+                                <path class="st6 highlightable" d="M404.1,526.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C412.1,522.5,408.5,526.1,404.1,526.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 206.6058 601.6051)" class="st3 st4 st5">Val</text>
+                                <path class="st6 highlightable" d="M269.1,613.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C277.1,609.5,273.5,613.1,269.1,613.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 86.6058 537.6051)" class="st3 st4 st5">Glu</text>
+                                <path class="st6 highlightable" d="M149.1,549.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C157.1,545.5,153.5,549.1,149.1,549.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 381.6058 598.6051)" class="st3 st4 st5">Leu</text>
+                                <path class="st6 highlightable" d="M444.1,610.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C452.1,606.5,448.5,610.1,444.1,610.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 539.6058 583.6051)" class="st3 st4 st5">Lys</text>
+                                <path class="st6 highlightable" d="M602.1,595.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C610.1,591.5,606.5,595.1,602.1,595.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 697.6058 612.6051)" class="st3 st4 st5">Thr</text>
+                                <path class="st6 highlightable" d="M760.1,624.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C768.1,620.5,764.5,624.1,760.1,624.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 714.6058 495.6051)" class="st3 st4 st5">Gly</text>
+                                <path class="st6 highlightable" d="M777.1,507.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C785.1,503.5,781.5,507.1,777.1,507.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 499.6058 472.6051)" class="st3 st4 st5">Tyr</text>
+                                <path class="st6 highlightable" d="M562.1,484.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C570.1,480.5,566.5,484.1,562.1,484.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 264.6058 310.6051)" class="st3 st4 st5">Ile</text>
+                                <path class="st6 highlightable" d="M327.1,322.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C335.1,318.5,331.5,322.1,327.1,322.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 430.6058 356.6051)" class="st3 st4 st5">Arg</text>
+                                <path class="st6 highlightable" d="M493.1,368.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C501.1,364.5,497.5,368.1,493.1,368.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 609.6058 291.6051)" class="st3 st4 st5">Met</text>
+                                <path class="st6 highlightable" d="M672.1,303.1h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C680.1,299.5,676.5,303.1,672.1,303.1z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 539.587 141.1161)" class="st3 st4 st5">Cys</text>
+                                <path class="st6 highlightable" d="M602.1,152.6h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C610.1,149,606.5,152.6,602.1,152.6z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 350.587 141.1161)" class="st3 st4 st5">Pro</text>
+                                <path class="st6 highlightable" d="M413.1,152.6h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C421.1,149,417.5,152.6,413.1,152.6z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 430.587 231.1161)" class="st3 st4 st5">Gln</text>
+                                <path class="st6 highlightable" d="M493.1,242.6h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C501.1,239,497.5,242.6,493.1,242.6z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 657.587 391.1161)" class="st3 st4 st5">Asp</text>
+                                <path class="st6 highlightable" d="M720.1,402.6h-64c-4.4,0-8-3.6-8-8v-30.5c0-4.4,3.6-8,8-8h64c4.4,0,8,3.6,8,8v30.5
+                                    C728.1,399,724.5,402.6,720.1,402.6z"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 397.0894 61.8609)" class="st3 st4 st7">SND</text>
+                                <rect x="393" y="45" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 544.0894 392.8609)" class="st3 st4 st7">SIG</text>
+                                <rect x="540" y="376" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 439.0894 520.8608)" class="st3 st4 st7">SIG</text>
+                                <rect x="435" y="504" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 465.0894 161.8609)" class="st3 st4 st7">CAR</text>
+                                <rect x="461" y="145" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 272.0894 123.8609)" class="st3 st4 st7">CLR</text>
+                                <rect x="268" y="107" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 348.0894 256.8609)" class="st3 st4 st7">NSA</text>
+                                <rect x="344" y="240" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 411.0894 654.8608)" class="st3 st4 st7">NSA</text>
+                                <rect x="407" y="638" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 535.0894 273.8609)" class="st3 st4 st7">MSA</text>
+                                <rect x="531" y="258" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 712.0894 124.8609)" class="st3 st4 st7">BOB</text>
+                                <rect x="710" y="109" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 612.0894 212.8609)" class="st3 st4 st7">FRQ</text>
+                                <rect x="610" y="197" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 476.0894 576.8608)" class="st3 st4 st7">FRQ</text>
+                                <rect x="474" y="561" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 720.0894 273.8609)" class="st3 st4 st7">TRN</text>
+                                <rect x="718" y="258" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 428.0894 453.8609)" class="st3 st4 st7">TRN</text>
+                                <rect x="426" y="438" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 310.0894 583.8608)" class="st3 st4 st7">TRN</text>
+                                <rect x="308" y="568" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(1 0 0 1 637.0894 581.8608)" class="st3 st4 st7">IND</text>
+                                <rect x="633" y="566" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 108.8609 221.9106)" class="st3 st4 st7">FRQ</text>
+                                <rect x="84.5" y="195.5" transform="matrix(4.487617e-11 -1 1 4.487617e-11 -103.5 310.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 108.8609 446.9106)" class="st3 st4 st7">IND</text>
+                                <rect x="84.5" y="418.5" transform="matrix(4.487617e-11 -1 1 4.487617e-11 -326.5 533.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 720.8608 445.9106)" class="st3 st4 st7">IND</text>
+                                <rect x="696.5" y="417.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 286.5 1144.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 479.8609 298.9106)" class="st3 st4 st7">SIG</text>
+                                <rect x="455.5" y="269.5" transform="matrix(4.487617e-11 -1 1 4.487617e-11 193.5 755.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 619.8609 519.9106)" class="st3 st4 st7">SND</text>
+                                <rect x="595.5" y="490.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 112.5 1116.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 833.8608 412.9106)" class="st3 st4 st7">SND</text>
+                                <rect x="809.5" y="383.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 433.5 1223.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 616.8609 344.9106)" class="st3 st4 st7">CLR</text>
+                                <rect x="592.5" y="313.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 286.5 936.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 368.8609 464.9106)" class="st3 st4 st7">CLR</text>
+                                <rect x="344.5" y="433.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 -81.5 808.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 151.8609 449.9106)" class="st3 st4 st7">CAR</text>
+                                <rect x="127.5" y="420.5" transform="matrix(4.487617e-11 -1 1 4.487617e-11 -285.5 578.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 222.8609 254.9106)" class="st3 st4 st7">MSA</text>
+                                <rect x="198.5" y="230.5" transform="matrix(4.487617e-11 -1 1 4.487617e-11 -24.5 459.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 722.8608 554.9106)" class="st3 st4 st7">MSA</text>
+                                <rect x="698.5" y="530.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 175.5 1259.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 172.8608 147.9106)" class="st3 st4 st7">BOB</text>
+                                <rect x="148.5" y="121.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 34.5 300.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 210.8608 508.9106)" class="st3 st4 st7">BOB</text>
+                                <rect x="186.5" y="482.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 -288.5 699.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 373.8608 203.9106)" class="st3 st4 st7">FRK</text>
+                                <rect x="351.5" y="176.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 182.5 558.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                            <g>
+                                <text transform="matrix(4.489659e-11 -1 1 4.489659e-11 265.8608 496.9106)" class="st3 st4 st7">FRK</text>
+                                <rect x="243.5" y="469.5" transform="matrix(4.485307e-11 -1 1 4.485307e-11 -218.5 743.5)" class="st8 highlightable" width="38" height="23"/>
+                            </g>
+                        </svg>
+
+
+                    </div>
+                   <div class="page-footer relative-footer">Page 2 of 3</div>
+                </div>
+                <div class="page page-bg-03">
+                    <div class="page-header">
+                        <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                        <span class="page-header-section-title">Genetic Sequence</span>
+                    </div>
+                    <div class="page-content">
+                        <h3>Determine Input Sequence</h3>
+
+                        <p>Use the table below to decode the amino acid sequence into the corresponding <b>coding strand</b>. If that is the final input sequence, you may submit it.</p>
+        
+                        <table>
+                            <tr>
+                                <th>Amino Acid Code</th>
+                                <th>Amino Acid Name</th>
+                                <th>Codon</th>
+                                <th class="empty"></th>
+                                <th>Amino Acid Code</th>
+                                <th>Amino Acid Name</th>
+                                <th>Codon</th>
+                            </tr>
+                            <tr>
+                                <td>Phe</td>
+                                <td>Phenylalanine</td>
+                                <td>TTT</td>
+                                <td class="empty"></td>
+                                <td>Leu</td>
+                                <td>Leucine</td>
+                                <td>TTA</td>
+                            </tr>
+                            <tr>
+                                <td>Met</td>
+                                <td>Methionine</td>
+                                <td>ATG</td>
+                                <td class="empty"></td>
+                                <td>Ile</td>
+                                <td>Isoleucine</td>
+                                <td>ATC</td>
+                            </tr>
+                            <tr>
+                                <td>Val</td>
+                                <td>Valine</td>
+                                <td>GTA</td>
+                                <td class="empty"></td>
+                                <td>Ser</td>
+                                <td>Serine</td>
+                                <td>TCG</td>
+                            </tr>
+                            <tr>
+                                <td>Pro</td>
+                                <td>Proline</td>
+                                <td>CCA</td>
+                                <td class="empty"></td>
+                                <td>Thr</td>
+                                <td>Threonine</td>
+                                <td>ACC</td>
+                            </tr>
+                            <tr>
+                                <td>Ala</td>
+                                <td>Alanine</td>
+                                <td>GCT</td>
+                                <td class="empty"></td>
+                                <td>Tyr</td>
+                                <td>Tyrosine</td>
+                                <td>TAT</td>
+                            </tr>
+                            <tr>
+                                <td>His</td>
+                                <td>Histidine</td>
+                                <td>CAT</td>
+                                <td class="empty"></td>
+                                <td>Gln</td>
+                                <td>Glutamine</td>
+                                <td>CAG</td>
+                            </tr>
+                            <tr>
+                                <td>Asn</td>
+                                <td>Asparagine</td>
+                                <td>AAC</td>
+                                <td class="empty"></td>
+                                <td>Lys</td>
+                                <td>Lysine</td>
+                                <td>AAA</td>
+                            </tr>
+                            <tr>
+                                <td>Asp</td>
+                                <td>Aspartic acid</td>
+                                <td>GAT</td>
+                                <td class="empty"></td>
+                                <td>Cys</td>
+                                <td>Cysteine</td>
+                                <td>TGC</td>
+                            </tr>
+                            <tr>
+                                <td>Glu</td>
+                                <td>Glutamic acid</td>
+                                <td>GAA</td>
+                                <td class="empty"></td>
+                                <td>Trp</td>
+                                <td>Tryptophan </td>
+                                <td>TGG</td>
+                            </tr>
+                            <tr>
+                                <td>Arg</td>
+                                <td>Arginine</td>
+                                <td>CGC</td>
+                                <td class="empty"></td>
+                                <td>Gly</td>
+                                <td>Glycine </td>
+                                <td>GGG</td>
+                            </tr>
+                        </table>
+
+                        <p>If your final input sequence is the <b>template strand</b>, you need to obtain the complementary sequence of the coding strand first. Use the table below to replace every nucleobase of the sequence with its complement. Because every sequence must be input in the 5′ to 3′ direction (five prime to three prime), the template strand <b>must be reversed</b> before it is submited. The image below helps to clarify this concept.</p>
+        
+                        <div class="inline">
+                            <table>
+                                <tr>
+                                    <th>Nucleobase</th>
+                                    <th>Base Complement</th>
+                                </tr>
+                                <tr>
+                                    <td class="aatable">A</td>
+                                    <td class="aatable">T</td>
+                                </tr>
+                                <tr>
+                                    <td class="aatable">T</td>
+                                    <td class="aatable">A</td>
+                                </tr>
+                                <tr>
+                                    <td class="aatable">G</td>
+                                    <td class="aatable">C</td>
+                                </tr>
+                                <tr>
+                                    <td class="aatable">C</td>
+                                    <td class="aatable">G</td>
+                                </tr>
+                            </table>
+                            <img src="img/dna.svg" style="height: 200px">
+                        </div>
+                        
+                    </div>
+                    <div class="page-footer relative-footer">Page 3 of 3</div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
