@@ -18,7 +18,10 @@ MonoBehaviour:
 
     Module by ThePianoPlayer
 
-    moduleID: geneticSequence'
+    moduleID: geneticSequence
+
+
+    GitHub Repository: https://github.com/luisdiogo98/ktane-geneticSequence'
   version: 1.0
   outputFolder: build
   previewImage: {fileID: 2800000, guid: ec30229eba693224b92dd8c857fa3dfb, type: 3}
