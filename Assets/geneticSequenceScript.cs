@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using KModkit;
 using UnityEngine;
+using rnd = UnityEngine.Random;
 
 public class geneticSequenceScript : MonoBehaviour
 {
@@ -15,8 +16,6 @@ public class geneticSequenceScript : MonoBehaviour
     public Material[] mats;
     Dictionary<string, KeyValuePair<string, string>[]> map = new Dictionary<string, KeyValuePair<string, string>[]>();
     Dictionary<string, char[]> decoder = new Dictionary<string, char[]>();
-
-    static System.Random rnd = new System.Random();
 
     bool reverse = false;
     char[] btnLabels = { 'A', 'T', 'C', 'G' };
@@ -183,7 +182,7 @@ public class geneticSequenceScript : MonoBehaviour
 
     void RandomizeLabels()
     {
-        btnLabels = btnLabels.OrderBy(x => rnd.Next()).ToArray();
+        btnLabels = btnLabels.OrderBy(x => rnd.Range(1, 100)).ToArray();
 
         for (int i = 0; i < 4; i++)
         {

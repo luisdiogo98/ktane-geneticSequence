@@ -18,6 +18,6 @@ MonoBehaviour:
     HTML: https://ktane.timwi.de/HTML/Genetic%20Sequence.html\r\nManual PDF: https://ktane.timwi.de/PDF/Genetic%20Sequence.pdf\r\n\r\nAny
     problems/suggestions, feel free to contact me on the KTaNE Discord @TheThirdMan.
     Join the KTaNE Discord here: https://discord.gg/Fv7YEDj"
-  version: 1.2
+  version: 1.3
   outputFolder: build
   previewImage: {fileID: 2800000, guid: ec30229eba693224b92dd8c857fa3dfb, type: 3}
