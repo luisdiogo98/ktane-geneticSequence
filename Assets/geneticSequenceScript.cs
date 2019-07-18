@@ -113,7 +113,7 @@ public class geneticSequenceScript : MonoBehaviour
         map.Add("His", new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("CLR", "Ala"), new KeyValuePair<string, string>("FRK", "Leu"), new KeyValuePair<string, string>("SIG", "Tyr") });
         map.Add("Gln", new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("FRK", "Pro"), new KeyValuePair<string, string>("FRQ", "Ser"), new KeyValuePair<string, string>("SIG", "Arg") });
         map.Add("Asn", new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("BOB", "Phe"), new KeyValuePair<string, string>("CLR", "Pro"), new KeyValuePair<string, string>("MSA", "Ile") });
-        map.Add("Lys", new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("IND", "Thr"), new KeyValuePair<string, string>("FRQ", "Leu"), new KeyValuePair<string, string>("SND", "Tyr") });
+        map.Add("Lys", new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("FRQ", "Leu"), new KeyValuePair<string, string>("IND", "Thr"), new KeyValuePair<string, string>("SND", "Tyr") });
         map.Add("Asp", new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("CLR", "Met"), new KeyValuePair<string, string>("IND", "Gly"), new KeyValuePair<string, string>("SIG", "Trp") });
         map.Add("Glu", new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("CAR", "Ala"), new KeyValuePair<string, string>("IND", "Trp"), new KeyValuePair<string, string>("NSA", "Thr") });
         map.Add("Cys", new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("BOB", "Ser"), new KeyValuePair<string, string>("CAR", "Pro"), new KeyValuePair<string, string>("SND", "Phe") });
