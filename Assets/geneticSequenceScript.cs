@@ -416,20 +416,74 @@ public class geneticSequenceScript : MonoBehaviour
     private readonly string TwitchHelpMessage = @"!{0} 1234OC [O = OK, C = CLR, buttons are 1–4 in reading order]";
 #pragma warning restore 414
 
-    public List<KMSelectable> ProcessTwitchCommand(string command)
+
+    // 1-4, call btns[command[i]-'1'].OnInteract()
+    // o, call btns[4].OnInteract()
+    // c, call btns[5].OnInteract()
+    public IEnumerator ProcessTwitchCommand(string command)
     {
-        var presses = new List<KMSelectable>();
-        for (int i = 0; i < command.Length; i++)
+        string[] commandsLowerCase = command.ToLower().Split(',',' ',';');
+        List<int> presses = new List<int>();
+        for (int x = 0; x < commandsLowerCase.Length; x++)
         {
-            if (command[i] >= '1' && command[i] <= '4')
-                presses.Add(btns[command[i] - '1']);
-            else if (command[i] == 'O' || command[i] == 'o')
-                presses.Add(btns[4]);
-            else if (command[i] == 'C' || command[i] == 'c')
-                presses.Add(btns[5]);
-            else if (!char.IsWhiteSpace(command[i]) && command[i] != ',' && command[i] != ';')
-                return null;
+            if (commandsLowerCase[x].Length > 1)
+            {
+                foreach (char character in commandsLowerCase[x])
+                {
+                    if (character.ToString().RegexMatch(@"[1-4]"))
+                    {
+                        presses.Add(int.Parse(character.ToString()) - 1);
+                    }
+                    else if (character.ToString().RegexMatch(@"o"))
+                    {
+                        presses.Add(4);
+                    }
+                    else if (character.ToString().RegexMatch(@"c"))
+                    {
+                        presses.Add(5);
+                    }
+                    else if (!character.ToString().RegexMatch(@"\s"))
+                    {
+                        yield return "sendtochaterror I'm sorry but what button is \"" + character + "\" supposed to relate to?";
+                        yield break;
+                    }
+                }
+            }
+            else if (commandsLowerCase[x].RegexMatch(@"[1-4]"))
+            {
+                presses.Add(int.Parse(commandsLowerCase[x]) - 1);
+            }
+            else if (commandsLowerCase[x].RegexMatch(@"o"))
+            {
+                presses.Add(4);
+            }
+            else if (commandsLowerCase[x].RegexMatch(@"c"))
+            {
+                presses.Add(5);
+            }
+            else if (!commandsLowerCase[x].RegexMatch(@"\s"))
+            {
+                yield return "sendtochaterror I'm sorry but what button is \"" + commandsLowerCase[x] + "\" supposed to relate to?";
+                yield break;
+            }
         }
-        return presses;
+        yield return null;
+        for (int y=0;y<presses.Count;y++)
+        {
+            if (checking)
+            {
+                yield return "sendtochaterror The module has entered the checking phase. The rest of the commands have been voided.";
+                yield break;
+            }
+            int buttonidx = presses[y];
+            if (buttonidx == 4)
+            {
+                yield return "strike";
+                yield return "solve";
+            }
+            btns[buttonidx].OnInteract();
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield break;
     }
 }
