@@ -32,13 +32,25 @@ public class geneticSequenceScript : MonoBehaviour
     void Awake()
     {
         moduleId = moduleIdCounter++;
-
-        btns[0].OnInteract += delegate () { PressATGCButton(btns[0]); return false; };
-        btns[1].OnInteract += delegate () { PressATGCButton(btns[1]); return false; };
-        btns[2].OnInteract += delegate () { PressATGCButton(btns[2]); return false; };
-        btns[3].OnInteract += delegate () { PressATGCButton(btns[3]); return false; };
-        btns[4].OnInteract += delegate () { PressButtonOk(); return false; };
-        btns[5].OnInteract += delegate () { PressButtonClr(); return false; };
+        for (int x = 0; x < 6; x++)
+        {
+            int y = x;
+            switch (y)
+            {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    btns[y].OnInteract += delegate { PressATGCButton(btns[y]); return false; };
+                    break;
+                case 4:
+                    btns[y].OnInteract += delegate { PressButtonOk(); return false; };
+                    break;
+                case 5:
+                    btns[y].OnInteract += delegate () { PressButtonClr(); return false; };
+                    break;
+            }
+        }
 
         PopulateMap();
         PopulateDecoder();
@@ -50,11 +62,6 @@ public class geneticSequenceScript : MonoBehaviour
         CalcStartingAA();
         CalcAASequence();
         CalcSolution();
-    }
-
-    void Update()
-    {
-
     }
 
     void PressATGCButton(KMSelectable btn)
@@ -76,14 +83,14 @@ public class geneticSequenceScript : MonoBehaviour
         if (inputPos == 12 && !moduleSolved && !checking)
         {
             checking = true;
-            StartCoroutine("CheckingAnimation");
+            StartCoroutine(CheckingAnimation());
         }
     }
 
     void PressButtonClr()
     {
         GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, transform);
-        btns[4].AddInteractionPunch();
+        btns[5].AddInteractionPunch();
 
         if (!moduleSolved && !checking)
         {
@@ -182,7 +189,7 @@ public class geneticSequenceScript : MonoBehaviour
 
     void RandomizeLabels()
     {
-        btnLabels = btnLabels.OrderBy(x => rnd.Range(1, 100)).ToArray();
+        btnLabels = btnLabels.OrderBy(x => rnd.Range(0, int.MaxValue)).ToArray();
 
         for (int i = 0; i < 4; i++)
         {
@@ -190,29 +197,53 @@ public class geneticSequenceScript : MonoBehaviour
             btns[i].GetComponentInChildren<Renderer>().material = ColorConversion(btnLabels[i]);
         }
 
-        Debug.LogFormat("[Genetic Sequence #{0}] The button labels are {1}{2}{3}{4}.", moduleId, btnLabels[0], btnLabels[1], btnLabels[2], btnLabels[3]);
+        Debug.LogFormat("[Genetic Sequence #{0}]: The button labels are {1}.", moduleId, btnLabels.Join(""));
     }
 
     void CalcStartingAA()
     {
         if (btnLabels[0] == 'A' && btnLabels[1] == 'C' && btnLabels[2] == 'G' && btnLabels[3] == 'T')
+        {
+            Debug.LogFormat("[Genetic Sequence #{0}]: The buttons appear in alphabetical order.", moduleId);
             AASequence[0] = "Trp";
+        }
         else if ((btnLabels[0] == 'A' && btnLabels[1] == 'C' && btnLabels[2] == 'T') || (btnLabels[1] == 'A' && btnLabels[2] == 'C' && btnLabels[3] == 'T'))
+        {
+            Debug.LogFormat("[Genetic Sequence #{0}]: \"ACT\" is present in the button order.", moduleId);
             AASequence[0] = "Gly";
+        }
         else if (btnLabels[3] == 'G')
+        {
+            Debug.LogFormat("[Genetic Sequence #{0}]: \"G\" is the label of the last button.", moduleId);
             AASequence[0] = "Tyr";
+        }
         else if (btnLabels[0] == 'T')
+        {
+            Debug.LogFormat("[Genetic Sequence #{0}]: \"T\" is the label of the first button.", moduleId);
             AASequence[0] = "Cys";
+        }
         else if ((Array.FindIndex(btnLabels, c => c == 'C') < Array.FindIndex(btnLabels, a => a == 'A')) && (Array.FindIndex(btnLabels, c => c == 'C') < Array.FindIndex(btnLabels, t => t == 'T')))
+        {
+            Debug.LogFormat("[Genetic Sequence #{0}]: \"C\" is further to the left than \"A\" and \"T\".", moduleId);
             AASequence[0] = "Arg";
+        }
         else if (Math.Abs(Array.FindIndex(btnLabels, a => a == 'A') - Array.FindIndex(btnLabels, t => t == 'T')) == 1)
+        {
+            Debug.LogFormat("[Genetic Sequence #{0}]: \"A\" and \"T\" are next to each other.", moduleId);
             AASequence[0] = "Leu";
+        }
         else if (Math.Abs(Array.FindIndex(btnLabels, c => c == 'C') - Array.FindIndex(btnLabels, g => g == 'G')) == 1)
+        {
+            Debug.LogFormat("[Genetic Sequence #{0}]: \"G\" and \"C\" are next to each other.", moduleId);
             AASequence[0] = "Ala";
+        }
         else
+        {
+            Debug.LogFormat("[Genetic Sequence #{0}]: No other rules applied.", moduleId);
             AASequence[0] = "Asn";
+        }
 
-        Debug.LogFormat("[Genetic Sequence #{0}] The starting amino acid is {1}.", moduleId, AASequence[0]);
+        Debug.LogFormat("[Genetic Sequence #{0}]: The starting amino acid is {1}.", moduleId, AASequence[0]);
     }
 
     void CalcAASequence()
@@ -220,7 +251,7 @@ public class geneticSequenceScript : MonoBehaviour
         FollowFirstPath(1, AASequence[0]);
         FollowFirstPath(2, AASequence[1]);
         FollowFirstPath(3, AASequence[2]);
-        Debug.LogFormat("[Genetic Sequence #{0}] The amino acid sequence is {1}-{2}-{3}-{4}.", moduleId, AASequence[0], AASequence[1], AASequence[2], AASequence[3]);
+        Debug.LogFormat("[Genetic Sequence #{0}]: This gives the amino acid sequence {1}-{2}-{3}-{4}.", moduleId, AASequence[0], AASequence[1], AASequence[2], AASequence[3]);
     }
 
     void FollowFirstPath(int pos, string from)
@@ -240,6 +271,7 @@ public class geneticSequenceScript : MonoBehaviour
             if (to[i].Key != null && bomb.IsIndicatorOn(to[i].Key))
             {
                 AASequence[pos] = to[i].Value;
+                Debug.LogFormat("[Genetic Sequence #{0}]: \"{1}\" path taken. The first alphabetically lit indicator is present.", moduleId, to[i].Key);
                 RemoveMapPath(from, to[i].Key);
                 RemoveMapPath(to[i].Value, to[i].Key);
                 return true;
@@ -256,6 +288,7 @@ public class geneticSequenceScript : MonoBehaviour
             if (to[i].Key != null && bomb.IsIndicatorOff(to[i].Key))
             {
                 AASequence[pos] = to[i].Value;
+                Debug.LogFormat("[Genetic Sequence #{0}]: \"{1}\" path taken. The first alphabetically unlit indicator is present. The final sequence will need to be {2}inverted.", moduleId, to[i].Key, reverse ? "un" : "");
                 RemoveMapPath(from, to[i].Key);
                 RemoveMapPath(to[i].Value, to[i].Key);
                 reverse = !reverse;
@@ -269,8 +302,10 @@ public class geneticSequenceScript : MonoBehaviour
     void FollowDefaultPath(int pos, string from, KeyValuePair<string, string>[] to)
     {
         AASequence[pos] = to[0].Value;
+        Debug.LogFormat("[Genetic Sequence #{0}]: \"{1}\" path taken. It is first alphabetically.", moduleId, to[0].Key);
         RemoveMapPath(from, to[0].Key);
         RemoveMapPath(to[0].Value, to[0].Key);
+        
     }
 
     void RemoveMapPath(string from, string path)
@@ -294,6 +329,21 @@ public class geneticSequenceScript : MonoBehaviour
         map.Add(from, new_to);
     }
 
+    string PrintGeneSeq(char[] sequence)
+    {
+        string output = "";
+        for (int x = 0; x < sequence.Length; x++)
+        {
+            if (x % 3 == 0 && x > 0)
+            {
+                output += "-";
+            }
+            output += sequence[x];
+        }
+        return output;
+    }
+
+
     void CalcSolution()
     {
         int pos = 0;
@@ -310,10 +360,11 @@ public class geneticSequenceScript : MonoBehaviour
             }
         }
 
+        Debug.LogFormat("[Genetic Sequence #{0}]: This gives the coding strand {1}.", moduleId, PrintGeneSeq(solution));
         if (reverse)
             ReverseSolution();
 
-        Debug.LogFormat("[Genetic Sequence #{0}] The solution is {1}{2}{3}-{4}{5}{6}-{7}{8}{9}-{10}{11}{12}.", moduleId, solution[0], solution[1], solution[2], solution[3], solution[4], solution[5], solution[6], solution[7], solution[8], solution[9], solution[10], solution[11]);
+        Debug.LogFormat("[Genetic Sequence #{0}]: The final solution is {1}.", moduleId, PrintGeneSeq(solution));
     }
 
     void ReverseSolution()
@@ -352,7 +403,7 @@ public class geneticSequenceScript : MonoBehaviour
     {
         if (CheckSolution())
         {
-            Debug.LogFormat("[Genetic Sequence #{0}] Solved! The input sequence was {1}{2}{3}-{4}{5}{6}-{7}{8}{9}-{10}{11}{12}.", moduleId, input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9], input[10], input[11]);
+            Debug.LogFormat("[Genetic Sequence #{0}]: Solved! The inputted sequence was {1}.", moduleId, PrintGeneSeq(input));
             moduleSolved = true;
             GetComponent<KMBombModule>().HandlePass();
 
@@ -364,7 +415,7 @@ public class geneticSequenceScript : MonoBehaviour
         }
         else
         {
-            Debug.LogFormat("[Genetic Sequence #{0}] Strike! The input sequence was {1}{2}{3}-{4}{5}{6}-{7}{8}{9}-{10}{11}{12}.", moduleId, input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9], input[10], input[11]);
+            Debug.LogFormat("[Genetic Sequence #{0}]: Strike! The inputted sequence was {1}.", moduleId, PrintGeneSeq(input));
             inputPos = 0;
             input = new char[12];
             GetComponent<KMBombModule>().HandleStrike();
@@ -410,26 +461,80 @@ public class geneticSequenceScript : MonoBehaviour
 
         checking = false;
     }
-
-
-#pragma warning disable 414
-    private readonly string TwitchHelpMessage = @"!{0} 1234OC [O = OK, C = CLR, buttons are 1–4 in reading order]";
-#pragma warning restore 414
-
-    public List<KMSelectable> ProcessTwitchCommand(string command)
+    IEnumerator HandleAutoSolve()
     {
-        var presses = new List<KMSelectable>();
-        for (int i = 0; i < command.Length; i++)
+        if (input.Length > 0)
+            btns[5].OnInteract();
+        for (int x = 0; x < solution.Length; x++)
         {
-            if (command[i] >= '1' && command[i] <= '4')
-                presses.Add(btns[command[i] - '1']);
-            else if (command[i] == 'O' || command[i] == 'o')
-                presses.Add(btns[4]);
-            else if (command[i] == 'C' || command[i] == 'c')
-                presses.Add(btns[5]);
-            else if (!char.IsWhiteSpace(command[i]) && command[i] != ',' && command[i] != ';')
-                return null;
+            btns[btnLabels.ToList().IndexOf(solution[x])].OnInteract();
+            yield return new WaitForSeconds(0f);
+            if (solution[x] != input[x])
+            {// Prevent submitting the wrong answer in case of interaction while auto-solving.
+                btns[5].OnInteract();
+                x = -1;
+            }
         }
-        return presses;
+        btns[4].OnInteract();
+        yield return null;
+    }
+    void TwitchHandleForcedSolve()
+    {
+        Debug.LogFormat("[Genetic Sequence #{0}]: A force solve has been issued viva TP handler.", moduleId);
+        StartCoroutine(HandleAutoSolve());
+    }
+#pragma warning disable 414
+    private readonly string TwitchHelpMessage = "To press the following buttons: \"!{0} 1234OC\" Numbers 1-4 are the scrambled ATCG buttons from left to right with 1 being the left-most button; O for OK; C for CLR";
+#pragma warning restore 414
+    
+
+    // 1-4, call btns[command[i]-'1'].OnInteract()
+    // o, call btns[4].OnInteract()
+    // c, call btns[5].OnInteract()
+    public IEnumerator ProcessTwitchCommand(string command)
+    {
+        string[] commandsLowerCase = command.ToLower().Split(',', ' ', ';');
+        List<int> presses = new List<int>();
+        for (int x = 0; x < commandsLowerCase.Length; x++)
+        {
+            foreach (char character in commandsLowerCase[x])
+            {
+                if (character.ToString().RegexMatch(@"[1-4]"))
+                {
+                    presses.Add(int.Parse(character.ToString()) - 1);
+                }
+                else if (character.ToString().RegexMatch(@"o"))
+                {
+                    presses.Add(4);
+                }
+                else if (character.ToString().RegexMatch(@"c"))
+                {
+                    presses.Add(5);
+                }
+                else if (!character.ToString().RegexMatch(@"\s"))
+                {
+                    yield return "sendtochaterror I'm sorry but what button is \"" + character + "\" supposed to relate to?";
+                    yield break;
+                }
+            }
+        }
+        yield return null;
+        for (int y = 0; y < presses.Count; y++)
+        {
+            if (checking)
+            {
+                yield return "sendtochaterror The module has entered the checking phase. The rest of the commands have been voided.";
+                yield break;
+            }
+            int buttonidx = presses[y];
+            btns[buttonidx].OnInteract();
+            if (buttonidx == 4)
+            {
+                yield return "strike";
+                yield return "solve";
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield break;
     }
 }
