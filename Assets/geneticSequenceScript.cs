@@ -461,32 +461,55 @@ public class geneticSequenceScript : MonoBehaviour
 
         checking = false;
     }
-    IEnumerator HandleAutoSolve()
-    {
-        if (input.Length > 0)
-            btns[5].OnInteract();
-        for (int x = 0; x < solution.Length; x++)
-        {
-            btns[btnLabels.ToList().IndexOf(solution[x])].OnInteract();
-            yield return new WaitForSeconds(0f);
-            if (solution[x] != input[x])
-            {// Prevent submitting the wrong answer in case of interaction while auto-solving.
-                btns[5].OnInteract();
-                x = -1;
-            }
-        }
-        btns[4].OnInteract();
-        yield return null;
-    }
-    void TwitchHandleForcedSolve()
+    IEnumerator TwitchHandleForcedSolve()
     {
         Debug.LogFormat("[Genetic Sequence #{0}]: A force solve has been issued viva TP handler.", moduleId);
-        StartCoroutine(HandleAutoSolve());
+        if (checking && !CheckSolution())
+        {
+            StopAllCoroutines();
+            moduleSolved = true;
+            GetComponent<KMBombModule>().HandlePass();
+            Audio.PlaySoundAtTransform("correct", transform);
+            foreach (Renderer entry in boxes[0].GetComponentsInChildren<Renderer>())
+            {
+                entry.material = mats[8];
+            }
+            foreach (Renderer entry in boxes[1].GetComponentsInChildren<Renderer>())
+            {
+                entry.material = mats[10];
+            }
+        }
+        else if (!checking)
+        {
+            for (int x = 0; x < inputPos; x++)
+            {
+                if (solution[x] != input[x])
+                {// Prevent submitting the wrong answer in case of interaction before auto-solving.
+                    btns[5].OnInteract();
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+                }
+            }
+            int start = inputPos;
+            for (int x = start; x < solution.Length; x++)
+            {
+                btns[btnLabels.ToList().IndexOf(solution[x])].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+                if (solution[x] != input[x])
+                {// Prevent submitting the wrong answer in case of interaction while auto-solving.
+                    btns[5].OnInteract();
+                    yield return new WaitForSeconds(0.1f);
+                    x = -1;
+                }
+            }
+            btns[4].OnInteract();
+        }
+        while (!moduleSolved) yield return true;
     }
 #pragma warning disable 414
     private readonly string TwitchHelpMessage = "To press the following buttons: \"!{0} 1234OC\" Numbers 1-4 are the scrambled ATCG buttons from left to right with 1 being the left-most button; O for OK; C for CLR";
 #pragma warning restore 414
-    
+ 
 
     // 1-4, call btns[command[i]-'1'].OnInteract()
     // o, call btns[4].OnInteract()
